@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "es.usj.mastertsa.rperalta.dbpractica"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "es.usj.mastertsa.rperalta.dbpractica"
@@ -49,6 +49,9 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
