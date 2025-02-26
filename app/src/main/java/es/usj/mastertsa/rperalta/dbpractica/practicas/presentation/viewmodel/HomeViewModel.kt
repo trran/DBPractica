@@ -16,9 +16,9 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val getPracticeData: GetPracticeData,
-    private val addPracticeData: AddPracticeData, private
-    val updatePracticeData: UpdatePracticeData, private
-    val deletePracticeData: DeletePracticeData) : ViewModel() {
+    private val addPracticeData: AddPracticeData,
+    private val updatePracticeData: UpdatePracticeData,
+    private val deletePracticeData: DeletePracticeData) : ViewModel() {
 
     private val practiceMutableStateFlow: MutableStateFlow<HomeState> = MutableStateFlow(HomeState.Loading)
     val practiceStateFlow: StateFlow<HomeState> = practiceMutableStateFlow
@@ -32,6 +32,10 @@ class HomeViewModel(
                 }
             }
 
+
+    fun getData() : String {
+      return  getPracticeData.getPracticeData().name
+    }
 
     fun addData(practiceData: PracticeData) {
         addPracticeData.addPracticeData(practiceData)

@@ -1,24 +1,27 @@
 package es.usj.mastertsa.rperalta.dbpractica.practicas.data.repository
 
+import es.usj.mastertsa.rperalta.dbpractica.practicas.data.locastore.PracticeDataSharedPreferences
 import es.usj.mastertsa.rperalta.dbpractica.practicas.domain.PracticeData
 import es.usj.mastertsa.rperalta.dbpractica.practicas.domain.PracticeRepository
 
-class PracticeDataRepositoryImpl: PracticeRepository  {
+class PracticeDataRepositoryImpl(private val practiceDataSharedPref:
+                                 PracticeDataSharedPreferences): PracticeRepository  {
 
     override fun getPracticeData(): PracticeData {
-        return PracticeData("Práctica 03")
+        val name = practiceDataSharedPref.getPrefData()
+        return PracticeData(name)
     }
 
     override fun addPracticeData(practiceData: PracticeData) {
-        TODO("Not yet implemented")
+       practiceDataSharedPref.addPrefData(practiceData.name)
     }
 
     override fun deletePracticeData() {
-        TODO("Not yet implemented")
+       practiceDataSharedPref.deletePrefData()
     }
 
     override fun updatePracticeData(practiceData: PracticeData) {
-        TODO("Not yet implemented")
+       practiceDataSharedPref.updatePrefData(practiceData.name)
     }
 
 }
