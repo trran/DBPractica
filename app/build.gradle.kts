@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

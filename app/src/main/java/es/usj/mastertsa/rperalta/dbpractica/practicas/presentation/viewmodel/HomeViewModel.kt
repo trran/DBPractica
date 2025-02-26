@@ -1,6 +1,5 @@
 package es.usj.mastertsa.rperalta.dbpractica.practicas.presentation.viewmodel
 
-import android.view.PixelCopy.request
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import es.usj.mastertsa.rperalta.dbpractica.practicas.domain.PracticeData
@@ -12,7 +11,9 @@ import es.usj.mastertsa.rperalta.dbpractica.practicas.usecases.UpdatePracticeDat
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class HomeViewModel(
     private val getPracticeData: GetPracticeData,
@@ -34,16 +35,22 @@ class HomeViewModel(
 
 
     fun getData() : String {
-      return  getPracticeData.getPracticeData().name
-    }
+      return runBlocking {getPracticeData.getPracticeData().first().name}
+}
 
     fun addData(practiceData: PracticeData) {
-        addPracticeData.addPracticeData(practiceData)
+        runBlocking{
+            addPracticeData.addPracticeData(practiceData)
+        }
     }
     fun updateData(practiceData: PracticeData) {
-        updatePracticeData.updatePracticeData(practiceData)
+        runBlocking{
+            updatePracticeData.updatePracticeData(practiceData)
+        }
     }
     fun deleteData() {
-        deletePracticeData.deletePracticeData()
+        runBlocking{
+            deletePracticeData.deletePracticeData()
+        }
     }
 }
